@@ -3,17 +3,24 @@
 </div>
 
 <%= link_to "Add New Question", new_poll_question_path %>
-<ol>
+<hr>
+<div class="row">
+
+<div class= "col-md-6">
 <% @questions.each do |question| %>
-  <li>
+
       <h4><%= question.question %></h4>
-    <ul><% question.answers.each do |answer| %>
-      <li><%= answer.answer %></li>
-    </ul><% end %>
-  <%= link_to 'Edit', edit_poll_question_path(@poll, question), class: 'btn btn-default' %>
-  <%= link_to 'Delete', poll_question_path(@poll, question),
-              method: :delete,
-              class: 'btn btn-danger' %>
+    <% question.answers.each do |answer| %>
+      <%= answer.answer %>
     <% end %>
-  </li>
-</ul>
+</div>
+<div class = "col-md-6">
+  <div class = "well">
+    <%= link_to 'Edit', edit_poll_question_path(@poll, question), class: 'btn btn-default' %>
+    <%= link_to 'Delete', poll_question_path(@poll, question),
+                method: :delete,
+                class: 'btn btn-danger' %>
+  </div>
+    <% end %>
+</div>
+</div>
