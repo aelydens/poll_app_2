@@ -6,5 +6,18 @@
     <%= f.text_area :topic, rows: 3, required: true, class: 'form-control' %>
   </div>
 
+  <div class="panel panel-default">
+    <div class="panel-heading">Answers</div>
+    <div class="panel-body">
+      <%= f.fields_for :answers do |options_form| %>
+        <%= render 'answer_fields', f: options_form %>
+      <% end %>
+
+      <div class="links">
+        <%= link_to_add_association 'Add Answer', f, :answers %>
+      </div>
+    </div>
+  </div>
+
   <%= f.submit 'Create', class: 'btn btn-primary btn-lg' %>
 <% end %>
