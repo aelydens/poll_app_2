@@ -1,0 +1,7 @@
+New Poll
+<hr>
+<%= form_for @poll do |f| %>
+  <%= f.label :topic %>
+  <%= f.text_field :topic %>
+  <%= f.submit "Create Poll Topic" %>
+<% end %>

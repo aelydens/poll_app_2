@@ -1,23 +1,23 @@
-<%= form_for @question do |f| %>
+<%= form_for [@poll, @question] do |f| %>
   <%= render 'shared/errors', object: @question %>
 
   <div class="form-group">
-    <%= f.label :topic %>
-    <%= f.text_area :topic, rows: 3, required: true, class: 'form-control' %>
+    <%= f.label :question %>
+    <%= f.text_area :question, class: 'form-control' %>
   </div>
 
   <div class="panel panel-default">
     <div class="panel-heading">Answers</div>
     <div class="panel-body">
-      <%= f.fields_for :answers do |options_form| %>
-        <%= render 'answer_fields', f: options_form %>
+      <%= f.fields_for :answers do |answers_form| %>
+        <%= render 'answer_fields', f: answers_form %>
       <% end %>
 
       <div class="links">
-        <%= link_to_add_association 'Add Answer', f, :answers %>
+        <%= link_to_add_association 'Add Answer', f, :answers, partial: "answer_fields" %>
       </div>
     </div>
   </div>
 
-  <%= f.submit 'Create', class: 'btn btn-primary btn-lg' %>
+  <%= f.submit 'Create', class: 'btn btn-primary' %>
 <% end %>

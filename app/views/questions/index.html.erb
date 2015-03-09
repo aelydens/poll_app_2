@@ -1,3 +1,19 @@
 <div class="page-header">
-  <h1>Questions for **Example Poll 1**</h1>
+  <h1>Poll Name: <%= @poll.topic %></h1>
 </div>
+
+<%= link_to "Add New Question", new_poll_question_path %>
+<ol>
+<% @questions.each do |question| %>
+  <li>
+      <h4><%= question.question %></h4>
+    <ul><% question.answers.each do |answer| %>
+      <li><%= answer.answer %></li>
+    </ul><% end %>
+  <%= link_to 'Edit', edit_poll_question_path(@poll, question), class: 'btn btn-default' %>
+  <%= link_to 'Delete', poll_question_path(@poll, question),
+              method: :delete,
+              class: 'btn btn-danger' %>
+    <% end %>
+  </li>
+</ul>

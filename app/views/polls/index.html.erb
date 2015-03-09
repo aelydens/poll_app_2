@@ -1,0 +1,5 @@
+All Polls
+<hr>
+<% @polls.each do |poll| %>
+  <p><%= link_to poll.topic, poll_questions_path(poll)  %></p>
+<% end %>
