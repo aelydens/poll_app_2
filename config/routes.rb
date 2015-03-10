@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :responses, only: [:create]
+
   get "/auth/:provider/callback", to: "sessions#create"
   delete "/sign-out", to: "sessions#destroy", as: :sign_out
   root 'static_pages#index'

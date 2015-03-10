@@ -1,5 +1,5 @@
 class AddIndexToResponses < ActiveRecord::Migration
   def change
-    add_index :votes, [:vote_option_id, :user_id], unique: true
+    add_index :responses, [:answer_id, :user_id], unique: true
   end
 end

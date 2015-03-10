@@ -15,4 +15,8 @@ class PollsController < ApplicationController
       render :new
     end
   end
+
+  def show
+    @poll = Poll.includes(:answers).find_by_id(params[:id])
+  end
 end
