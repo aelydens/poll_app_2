@@ -1,0 +1,11 @@
+<%= form_tag responses_path, method: :post, remote: true, id: 'response_form' do %>
+  <%= hidden_field_tag 'question[id]', @question.id %>
+
+  <%= render partial: 'polls/answer', collection: @question.answers, as: :option %>
+
+  <% if current_user.responded_to?(@question) %>
+    <p>You have already voted!</p>
+  <% else %>
+    <%= submit_tag 'Vote', class: 'btn btn-default' %>
+  <% end %>
+<% end %>
